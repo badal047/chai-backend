@@ -17,4 +17,14 @@ app.use(express.urlencoded({extended:true, limit:"16kb"})) //this is to limit th
 app.use(express.static("public")) //this will store images and other files for temporary purpose in public
 app.use(cookieParser())//this is to enable the user to access the cookies in the browser and also set the cookies
 
+
+//routes import
+import userRouter from './routes/user.routes.js'
+
+
+//routes declaration
+app.use("/api/v1/users", userRouter)
+
+
+
 export {app}
