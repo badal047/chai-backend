@@ -17,6 +17,9 @@ const registerUser = asyncHandler(async (req,res)=>{
 
     const {fullName, email, username, password } = req.body
     // console.log("email: ", email);
+    
+    // console.log("req.body: \n", req.body);
+
 
     if (
         [fullName, email, username, password].some((field) => field?.trim() === "")
@@ -33,12 +36,15 @@ const registerUser = asyncHandler(async (req,res)=>{
     }
     //console.log(req.files);
 
-    const avatarLocalPath = req.files?.avatar[0]?.path;
+    // const avatarLocalPath = req.files?.avatar[0]?.path;
     // const coverImageLocalPath = req.files?.coverImage[0]?.path;
 
-    let coverImageLocalPath;
+    let coverImageLocalPath, avatarLocalPath;
     if (req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0) {
         coverImageLocalPath = req.files.coverImage[0].path
+    }
+    if (req.files && Array.isArray(req.files.avatar) && req.files.avatar.length > 0) {
+        avatarLocalPath = req.files.avatar[0].path
     }
     
 
